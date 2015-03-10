@@ -1,0 +1,6 @@
+1.set virtual machine network to bridged.
+2.start up virtual machine, set ip address to static which is in the same subnet with the host.
+3.swich off the firewall of the guest. (windows xp)
+    - control panel -> firewall
+    - msconfig -> services -> unable security center
+
