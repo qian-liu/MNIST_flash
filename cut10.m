@@ -26,6 +26,10 @@ function [cutted ] = cut10(file_label)
 
 
         %Cutting
+        if length(peak_label) <= 11
+            cutted = -2;
+            return
+        end
         for i = 1:10
             record_start = max(peak_label(i)-17, 1);
             record_end = min(peak_label(i)+16, maxFrame);
