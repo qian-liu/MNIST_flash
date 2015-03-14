@@ -26,23 +26,24 @@ function [cutted ] = cut10(file_label)
 
 
         %Cutting
-        if length(peak_label) <= 11
+        if length(peak_label) < 10
             cutted = -2;
             return
-        end
-        for i = 1:10
-            record_start = max(peak_label(i)-17, 1);
-            record_end = min(peak_label(i)+16, maxFrame);
-            cut_mat = get_mat(cin, frameLen, record_start, record_end);
+        else
+            for i = 1:10
+                record_start = max(peak_label(i)-17, 1);
+                record_end = min(peak_label(i)+16, maxFrame);
+                cut_mat = get_mat(cin, frameLen, record_start, record_end);
 
-            if mod(i,2) == 0
-                flash = 'off';
-            else
-                flash = 'on';
+                if mod(i,2) == 0
+                    flash = 'off';
+                else
+                    flash = 'on';
+                end
+                cutfile_name = sprintf('/home/liuq/Documents/sharedVM/MNIST_cut/%s_%s_%d.aedat', file_label, flash, ceil(i/2));
+                mat2dat(cut_mat,  cutfile_name);
+        %         display_record(cutfile_name, frameLen/1000000);
             end
-            cutfile_name = sprintf('/home/liuq/Documents/sharedVM/MNIST_cut/%s_%s_%d.aedat', file_label, flash, ceil(i/2));
-            mat2dat(cut_mat,  cutfile_name);
-    %         display_record(cutfile_name, frameLen/1000000);
         end
     end
 

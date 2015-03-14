@@ -12,8 +12,11 @@ fig = figure('Position', [0 0 200 200]); % 76    11   700   700
 blank = zeros(28, 28);
 PORT = 8997;
 HOST = '130.88.198.188';
-load('err_msg.mat');
-for i = 17665 : length(label_list)
+dlmwrite('err_msg.mat', error_msg);
+error_msg=dlmread('err_msg.mat');
+i = 22997;
+% for i = 17665 : length(label_list)
+while i <= length(label_list)
     i
     % start logging
     label = label_list(i);
@@ -43,8 +46,10 @@ for i = 17665 : length(label_list)
     file_label = sprintf('%d_%05d', label, i);
     cutted = cut10(file_label);
     if cutted < 0
-        i = i-1;
         error_msg = [error_msg; cutted, i];
+    else
+        i = i + 1;
+        
     end
 end
 
