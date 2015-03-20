@@ -1,6 +1,6 @@
-%load('test_set.mat');
-load('train_set.mat');
-load('train_label.mat');
+load('all.mat');
+% load('train_set.mat');
+% load('train_label.mat');
 inter_time = 0.96; % 2 second overall;
 record_delay = 0.5;
 image_hight = 28;
@@ -12,9 +12,9 @@ fig = figure('Position', [0 0 200 200]); % 76    11   700   700
 blank = zeros(28, 28);
 PORT = 8997;
 HOST = '130.88.198.188';
-dlmwrite('err_msg.mat', error_msg);
+% dlmwrite('err_msg.mat', error_msg);
 error_msg=dlmread('err_msg.mat');
-i = 22997;
+i =  59373;
 % for i = 17665 : length(label_list)
 while i <= length(label_list)
     i
